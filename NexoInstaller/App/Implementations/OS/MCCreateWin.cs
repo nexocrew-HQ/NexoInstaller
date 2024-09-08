@@ -10,22 +10,9 @@ public class MCCreateWin : IOSAction
 
     public async Task Execute(IServiceProvider serviceProvider)
     {
-        var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        var url =
-            $"https://installer.system.nexocrew.space/mccreate/win/McCreate.exe";
+
+        await BashHelper.ExecuteCommand("winget install mccreate");
 
 
-        var client = new HttpClient();
-
-        if (!Directory.Exists(path + "\\mccreate"))
-            Directory.CreateDirectory(path + "\\mccreate");
-
-        var stream = await client.GetStreamAsync(url);
-        var fs = new FileStream(path + "\\mccreate\\mccreate.exe", FileMode.OpenOrCreate);
-        await stream.CopyToAsync(fs);
-        fs.Close();
-        stream.Close();
-
-        Environment.SetEnvironmentVariable("PATH", path + "\\mccreate", EnvironmentVariableTarget.Machine);
     }
 }

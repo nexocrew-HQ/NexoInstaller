@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5a0d7518-45a3-4ac9-81e5-65b20d30c080" name="cloud1.server.nexocrew.space">
+        <fileTransfer rootFolder="/portainer/web/nexoinstaller/www" accessType="SFTP" host="cloud1.server.nexocrew.space" port="22" sshConfigId="f6947cb0-501b-4b9d-932f-a664460f54e4" sshConfig="root@cloud1.server.nexocrew.space:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
