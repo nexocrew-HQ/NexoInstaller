@@ -13,16 +13,13 @@ public class MCCreateLinux : IOSAction
     public async Task Execute(IServiceProvider serviceProvider)
     {
 
-        var arch = BashHelper.ExecuteCommand("uname -m | grep -q 'x86_64' && echo 'x64' || echo 'arm64'");
+        var arch = await BashHelper.ExecuteCommand("uname -m | grep -q 'x86_64' && echo 'x64' || echo 'arm64'");
         
-        
-        
-        
-        var url = $"https://installer.system.nexocrew.space/mccreate/linux/${arch}";
+        var url = $"https://installer.system.nexocrew.space/mccreate/${arch}/McCreate";
 
         var client = new HttpClient();
         using var fs = File.Create("/usr/local/bin/mccreate");
-        await BashHelper.ExecuteCommand("chmod -x /usr/local/bin/mccreate");
+        await BashHelper.ExecuteCommand("chmod -R 777 /usr/local/bin/mccreate");
         using var stream = await client.GetStreamAsync(url);
         await stream.CopyToAsync(fs);
         await fs.FlushAsync();
